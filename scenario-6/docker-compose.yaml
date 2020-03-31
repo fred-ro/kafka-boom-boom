@@ -38,6 +38,9 @@ services:
       KAFKA_BROKER_ID: "1"
       KAFKA_BROKER_RACK: rack-a
       #KAFKA_TOOLS_LOG4J_LOGLEVEL: TRACE
+    sysctls:
+      # http://willbryant.net/overriding_the_default_linux_kernel_20_second_tcp_socket_connect_timeout
+      - net.ipv4.tcp_syn_retries=4
 
   kafka-2:
     image: confluentinc/cp-kafka
